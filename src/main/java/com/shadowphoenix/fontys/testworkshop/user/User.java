@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class User {
+    private String email;
+    private String password;
     private String firstName;
     private String lastName;
     private String gender;
@@ -14,9 +16,11 @@ public class User {
     private String postalCode;
     private String city;
     private List<Interest> interests;
-    // private List<User> matches;
+    private List<User> matches;
 
     public User(
+            @JsonProperty(value = "email") String email,
+            @JsonProperty(value = "password") String password,
             @JsonProperty(value = "firstName") String firstName,
             @JsonProperty(value = "lastName") String lastName,
             @JsonProperty(value = "gender") String gender,
@@ -25,7 +29,10 @@ public class User {
             @JsonProperty(value = "streetNumber") Number streetNumber,
             @JsonProperty(value = "postalCode") String postalCode,
             @JsonProperty(value = "city") String city,
-            @JsonProperty(value = "interests") List<Interest> interests) {
+            @JsonProperty(value = "interests") List<Interest> interests,
+            @JsonProperty(value = "matches") List<User> matches) {
+        this.email = email;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = determineGender(gender);
@@ -35,12 +42,29 @@ public class User {
         this.postalCode = postalCode;
         this.city = city;
         this.interests = interests;
+        this.matches = matches;
     }
 
     private String determineGender(String gender) {
         if (gender.equals("male")) return "female";
         else if (gender.equals("female")) return "male";
         else return "other";
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -113,5 +137,13 @@ public class User {
 
     public void setInterests(List<Interest> interests) {
         this.interests = interests;
+    }
+
+    public List<User> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<User> matches) {
+        this.matches = matches;
     }
 }
