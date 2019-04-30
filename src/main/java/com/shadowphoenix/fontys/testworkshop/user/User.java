@@ -28,13 +28,19 @@ public class User {
             @JsonProperty(value = "interests") List<Interest> interests) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.gender = gender;
+        this.gender = determineGender(gender);
         this.age = age;
         this.streetAddress = streetAddress;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
         this.city = city;
         this.interests = interests;
+    }
+
+    private String determineGender(String gender) {
+        if (gender.equals("male")) return "female";
+        else if (gender.equals("female")) return "male";
+        else return "other";
     }
 
     public String getFirstName() {
