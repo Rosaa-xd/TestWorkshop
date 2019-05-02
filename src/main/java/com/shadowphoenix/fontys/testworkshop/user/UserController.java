@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -30,33 +31,38 @@ public class UserController {
     }
 
     @PostMapping("/user/addInterest")
-    public User create(@RequestParam("uuid") int uuid, @RequestParam String interest) {
-        return null;
+    public Map<UUID, User> addInterest(@RequestParam("uuid") String uuid, @RequestParam String interest) {
+        return userService.addInterest(uuid, interest);
     }
 
     @GetMapping("/user/byId")
-    public User getById(@RequestParam("uuid") int uuid) {
-        return null;
+    public Map<UUID, User> getById(@RequestParam("uuid") String uuid) {
+        return userService.getById(uuid);
     }
 
     @GetMapping("/user/byInterest")
-    public List<User> getByInterest(@RequestParam("interest") String interest) {
-        return null;
+    public HashMap<UUID, User> getByInterest(@RequestParam("interest") String interest) {
+        return userService.getByInterest(interest);
     }
 
     @GetMapping("/user/byAge")
-    public List<User> getByAge(@RequestParam("age") int age) {
-        return null;
+    public HashMap<UUID, User> getByAge(@RequestParam("age") int age) {
+        return userService.getByAge(age);
     }
 
     @GetMapping("/user/byAgeRange")
-    public List<User> getByAgeRange(@RequestParam("minAge") int minAge, @RequestParam("maxAge") int maxAge) {
-        return null;
+    public HashMap<UUID, User> getByAgeRange(@RequestParam("minAge") int minAge, @RequestParam("maxAge") int maxAge) {
+        return userService.getByAgeRange(minAge, maxAge);
+    }
+
+    @PostMapping("/user/addMatch")
+    public Map<UUID, User> addMatch(@RequestParam("uuid") String uuid, @RequestParam("matchuuid") String matchuuid) {
+        return userService.addMatch(uuid, matchuuid);
     }
 
     @GetMapping("/user/matches")
-    public List<User> getMatches(@RequestParam("uuid") int uuid) {
-        return null;
+    public List<User> getMatches(@RequestParam("uuid") String uuid) {
+        return userService.getMatches(uuid);
     }
 
     @GetMapping("/users")

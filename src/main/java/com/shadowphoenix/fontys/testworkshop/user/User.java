@@ -15,7 +15,7 @@ public class User {
     private Number streetNumber;
     private String postalCode;
     private String city;
-    private List<Interest> interests;
+    private List<String> interests;
     private List<User> matches;
 
     public User(
@@ -29,7 +29,7 @@ public class User {
             @JsonProperty(value = "streetNumber") Number streetNumber,
             @JsonProperty(value = "postalCode") String postalCode,
             @JsonProperty(value = "city") String city,
-            @JsonProperty(value = "interests") List<Interest> interests,
+            @JsonProperty(value = "interests") List<String> interests,
             @JsonProperty(value = "matches") List<User> matches) {
         this.email = email;
         this.password = password;
@@ -131,19 +131,15 @@ public class User {
         this.city = city;
     }
 
-    public List<Interest> getInterests() {
+    public List<String> getInterests() {
         return interests;
-    }
-
-    public void setInterests(List<Interest> interests) {
-        this.interests = interests;
     }
 
     public List<User> getMatches() {
         return matches;
     }
 
-    public void setMatches(List<User> matches) {
-        this.matches = matches;
-    }
+    public void addInterest(String interest) { this.interests.add(interest); }
+
+    public void addMatch(User match) {this.getMatches().add(match); }
 }
