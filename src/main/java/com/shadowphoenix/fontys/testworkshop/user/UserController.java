@@ -19,6 +19,11 @@ public class UserController {
         return userService.getTestUser();
     }
 
+    @PostMapping("/user/login")
+    public Object login(@RequestParam("email") String email, @RequestParam("password") String password) {
+        return userService.login(email, password);
+    }
+
     @PostMapping("/user/create")
     public Map<UUID, User> create(@Valid @RequestBody User user) {
         return userService.create(user);

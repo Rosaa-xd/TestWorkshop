@@ -1,13 +1,1 @@
-[
-  {
-    "firstName": "Harry",
-    "lastName": "Potter",
-    "gender": "female",
-    "age": 17,
-    "streetAddress": "Privet Drive",
-    "streetNumber": 4,
-    "postalCode": "123456",
-    "city": "Surrey",
-    "interests": []
-  }
-]
+[]
