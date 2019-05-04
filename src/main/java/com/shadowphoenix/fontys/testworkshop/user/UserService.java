@@ -20,6 +20,7 @@ public class UserService {
                 1,
                 "1234AB",
                 "Tilburg",
+                612345678,
                 new ArrayList<>(),
                 new ArrayList<>());
     }

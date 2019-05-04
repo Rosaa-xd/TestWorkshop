@@ -15,6 +15,7 @@ public class User {
     private Number streetNumber;
     private String postalCode;
     private String city;
+    private long phoneNumber;
     private List<String> interests;
     private List<User> matches;
 
@@ -29,6 +30,7 @@ public class User {
             @JsonProperty(value = "streetNumber") Number streetNumber,
             @JsonProperty(value = "postalCode") String postalCode,
             @JsonProperty(value = "city") String city,
+            @JsonProperty(value = "phoneNumber") long phoneNumber,
             @JsonProperty(value = "interests") List<String> interests,
             @JsonProperty(value = "matches") List<User> matches) {
         this.email = email;
@@ -41,6 +43,7 @@ public class User {
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
         this.city = city;
+        this.phoneNumber = phoneNumber;
         this.interests = interests;
         this.matches = matches;
     }
@@ -129,6 +132,14 @@ public class User {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public List<String> getInterests() {
